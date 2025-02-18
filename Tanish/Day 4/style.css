@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f8f8;
+    margin: 0;
+    /* overflow: hidden; */
+}
+.container {
+    display: flex;
+    border: 2px solid green;
+    border-radius: 10px;
+    padding: 20px;
+    background: white;
+    width: 90vw;
+    height: 90vh;
+    gap: 20px;
+    /* overflow: hidden; */
+}
+.task-input {
+    background-color: pink;
+    padding: 15px;
+    border-radius: 10px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.task-input label, .task-input input, .task-input button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+.task-input input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.task-input button {
+    background: lightgreen;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.task-list {
+    width: 60%;
+    overflow-y: auto;
+    max-height: 100%;
+    padding-right: 10px;
+}
+.task-item {
+    border: 2px solid green;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    background: #f0fff0;
+}
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.task-status-label {
+    font-size: 14px;
+    color: gray;
+}
+.delete-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: red;
+}
