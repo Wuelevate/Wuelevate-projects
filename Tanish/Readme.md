@@ -9,8 +9,13 @@ Each task covers different aspects of **frontend, backend, databases, and full-s
 
 - **Day 1**:   basic webpage using html and css
 - **Day 2**:   Portfolio using html , css and Java script
-- **Day 3 task 1**:   cunter app with flex box and grid using html , css and Java script
-- **Day 3 task 2**:   common home page using html and css
+- **Day 3 task 1**:   counter app with flex box and grid using html , css and Java script
+- **Day 3 task 2**:   common structure of home page using html and css
+- **Day 4**:   Todo list using html , css and Java script
+- **Day 5**:   replication and custom definition of high-order functions (map, filter, reduce)
+- **Day 6**:   Weather app with api calling
+- **Day 7**:   Replicate sundown website using html , css and js with swiper.js and locomotive
+- **Day 8**:   counter app using react and tailwind
 
 ---
 
