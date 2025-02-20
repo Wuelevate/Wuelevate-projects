@@ -1,1 +1,1 @@
-counter app gitHub link : hhttps://github.com/Tanish8923/tourCards
+counter app gitHub link : https://github.com/Tanish8923/tourCards
