@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>To-Do List</title>
+        <style>
+    /* --- Basic Reset --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      margin: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* --- Left Panel (Task Input) --- */
+    .left-panel {
+      flex: 1 1 300px;
+      max-width: 400px;
+      background-color: #ffe6e6; /* Light pink background */
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .left-panel h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .task-form-group {
+      margin-bottom: 15px;
+    }
+
+    .task-form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .task-form-group input[type="text"],
+    .task-form-group input[type="datetime-local"],
+    .task-form-group textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .task-form-group textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .submit-btn {
+      background-color: #8cc63f;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .submit-btn:hover {
+      background-color: #7ab539;
+    }
+
+    /* --- Right Panel (Task List) --- */
+    .right-panel {
+      flex: 1 1 300px;
+      max-width: 600px;
+      border: 2px solid #8cc63f; /* Green outline */
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .right-panel h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .task-list {
+      list-style: none;
+    }
+
+    .task-item {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .task-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .task-name {
+      font-weight: bold;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .task-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+
+    .task-status input[type="checkbox"] {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    .task-deadline {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+  </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Left Panel: Task Input Form -->
+            <div class="left-panel">
+                <h2>Add a Task</h2>
+                <form id="taskForm">
+                    <div class="task-form-group">
+                        <label for="taskName">Task Name:</label>
+                        <input type="text" id="taskName"
+                            placeholder="e.g. Study" required />
+                    </div>
+
+                    <div class="task-form-group">
+                        <label for="taskDescription">Task Description:</label>
+                        <textarea id="taskDescription"
+                            placeholder="e.g. Mathematics for 3 hours"
+                            required></textarea>
+                    </div>
+
+                    <div class="task-form-group">
+                        <label for="taskDeadline">Deadline:</label>
+                        <input type="datetime-local" id="taskDeadline"
+                            required />
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+
+            <!-- Right Panel: Task List -->
+            <div class="right-panel">
+                <h2>Tasks</h2>
+                <ul id="taskList" class="task-list">
+                    <!-- Tasks will appear here dynamically -->
+                </ul>
+            </div>
+        </div>
+
+        <script>
+    // Select elements
+    const taskForm = document.getElementById('taskForm');
+    const taskList = document.getElementById('taskList');
+
+    // Array to store tasks
+    let tasks = [];
+
+    // Event Listener for form submission
+    taskForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Get form values
+      const taskName = document.getElementById('taskName').value.trim();
+      const taskDescription = document
+        .getElementById('taskDescription')
+        .value.trim();
+      const taskDeadline = document.getElementById('taskDeadline').value;
+
+      // Create a new task object
+      const newTask = {
+        name: taskName,
+        description: taskDescription,
+        deadline: taskDeadline,
+        completed: false,
+      };
+
+      // Add to tasks array
+      tasks.push(newTask);
+
+      // Reset the form
+      taskForm.reset();
+
+      // Render tasks
+      renderTasks();
+    });
+
+    // Render tasks to the DOM
+    function renderTasks() {
+      // Clear existing list
+      taskList.innerHTML = '';
+
+      // Loop through tasks and create list items
+      tasks.forEach((task, index) => {
+        // Create elements
+        const li = document.createElement('li');
+        li.className = 'task-item';
+
+        const topRow = document.createElement('div');
+        topRow.className = 'task-top-row';
+
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'task-name';
+        nameSpan.textContent = task.name;
+
+        const statusLabel = document.createElement('label');
+        statusLabel.className = 'task-status';
+
+        const statusCheckbox = document.createElement('input');
+        statusCheckbox.type = 'checkbox';
+        statusCheckbox.checked = task.completed;
+        statusCheckbox.addEventListener('change', function () {
+          tasks[index].completed = this.checked;
+          renderTasks();
+        });
+
+        statusLabel.appendChild(statusCheckbox);
+        statusLabel.appendChild(
+          document.createTextNode(
+            task.completed ? 'Completed' : 'Incomplete'
+          )
+        );
+
+        topRow.appendChild(nameSpan);
+        topRow.appendChild(statusLabel);
+
+        const descPara = document.createElement('p');
+        descPara.textContent = task.description;
+
+        const deadlinePara = document.createElement('p');
+        deadlinePara.className = 'task-deadline';
+        deadlinePara.textContent = `Deadline: ${formatDeadline(
+          task.deadline
+        )}`;
+
+        // If the task is completed, add a "completed" style
+        if (task.completed) {
+          nameSpan.classList.add('completed');
+          descPara.classList.add('completed');
+          deadlinePara.classList.add('completed');
+        }
+
+        // Append to list item
+        li.appendChild(topRow);
+        li.appendChild(descPara);
+        li.appendChild(deadlinePara);
+
+        // Append list item to the task list
+        taskList.appendChild(li);
+      });
+    }
+
+    // Helper function to format the deadline date/time
+    function formatDeadline(deadlineString) {
+      if (!deadlineString) return '';
+      const date = new Date(deadlineString);
+      if (isNaN(date.getTime())) return '';
+
+      // Format e.g. "Feb 13, 2025, 09:00 PM"
+      const options = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      };
+      return date.toLocaleString(undefined, options);
+    }
+  </script>
+    </body>
+</html>
