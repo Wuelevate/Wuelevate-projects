@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOPPING- Fabric Store</title>
+   <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+.img{
+    background-image: url('https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    height: 500px;
+    padding-top: 30px; 
+    text-align: center;
+    color: beige;
+    font-size: large;
+    
+}
+.para {
+    margin-top: 200px;
+    height: 250px;
+    width: 400px;
+    margin-left: 65%;
+    font-size: x-large;
+}
+
+.hero {
+    background: url('https://images.unsplash.com/photo-1524275539700-cf51138f679b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNsb3RoaW5nfGVufDB8fDB8fHww') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero .cta, .about .cta {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.about, .products {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.about h2, .products h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.fabric-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.fabric-item {
+    background-color:grey;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .fabric-item {
+        width: 100%;
+    }
+}
+   </style>
+</head>
+<body>
+    <header>
+        <div class="logo">SHOP-KIT</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Best Online Fabric Store for Men</h1>
+        <p>Get 100+ Spirit of Authentic Products</p>
+        <button id="exploreBtn" class="cta">Explore More</button>
+    </section>
+
+    <section id="about" class="about">
+        <h2>What Makes Us Pro?</h2>
+        <p>100% Authentic Products | Free & Easy Returns | Nationwide Delivery | Safe Payments</p>
+        <button id="storyBtn" class="cta">Watch Our Story</button>
+    </section>
+
+    <div class="img">
+        
+        <h1>Best Online Febric Store For men&women</h1>
+        <p class="para">We are a leading online fabric store for men and women, dedicated to providing you with the best quality and authentic fabrics. Our mission is to help you find the perfect match for your style, comfort, and budget. We are here to support you in your journey towards a beautiful and stylish life.</p>
+        
+    </div>
+
+    <section id="products" class="products">
+        <h2>Our Fabrics</h2>
+        <div class="fabric-list">
+            <div class="fabric-item">Viscose</div>
+            <div class="fabric-item">Cashmere</div>
+            <div class="fabric-item">Wool</div>
+            <div class="fabric-item">Synthetic</div>
+            <div class="fabric-item">Linen</div>
+            <div class="fabric-item">Silk</div>
+            <div class="fabric-item">Polymide</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Follow us on Instagram for quick updates!</p>
+    </footer>
+
+    <script>
+        document.getElementById('exploreBtn').addEventListener('click', function() {
+    alert('Explore our wide range of authentic fabrics!');
+});
+
+document.getElementById('storyBtn').addEventListener('click', function() {
+    alert('Watch our story to learn more about our journey and commitment to quality.');
+});
+    </script>
+</body>
+</html>

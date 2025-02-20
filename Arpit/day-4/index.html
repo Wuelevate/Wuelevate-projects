@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .main-container {
+            width: 80%;
+            border: 3px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+            background-color: #f9f9f9;
+        }
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-container {
+            width: 40%;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .task-container {
+            width: 50%;
+            margin-top: 20px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .task {
+            border: 2px solid green;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            position: relative;
+        }
+        input, textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        button {
+            padding: 12px 20px;
+            background: linear-gradient(45deg, #28a745, #218838);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .delete-btn {
+            margin-top: 10px;
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="content-wrapper">
+            <div class="form-container">
+                <h2>Task Manager</h2>
+                <form id="taskForm">
+                    <input type="text" id="taskName" placeholder="Task Name" required>
+                    <textarea id="taskDescription" placeholder="Task Description" required></textarea>
+                    <input type="date" id="taskDeadline" required>
+                    <button type="submit">Add Task</button>
+                </form>
+            </div>
+            
+            <div class="task-container" id="taskContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('taskForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let taskName = document.getElementById('taskName').value;
+            let taskDescription = document.getElementById('taskDescription').value;
+            let taskDeadline = document.getElementById('taskDeadline').value;
+            
+            let taskContainer = document.getElementById('taskContainer');
+            let taskDiv = document.createElement('div');
+            taskDiv.classList.add('task');
+            
+            taskDiv.innerHTML = `
+                <strong>${taskName}</strong><br>
+                ${taskDescription}<br>
+                <em>Deadline: ${taskDeadline}</em>
+                <button class="delete-btn">Delete</button>
+            `;
+
+            
+            let deleteBtn = taskDiv.querySelector('.delete-btn');
+            deleteBtn.addEventListener('click', function() {
+                taskContainer.removeChild(taskDiv);
+            });
+
+            
+            taskContainer.appendChild(taskDiv);
+
+           
+            document.getElementById('taskForm').reset();
+        });
+    </script>
+</body>
+</html>
