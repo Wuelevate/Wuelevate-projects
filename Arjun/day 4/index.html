@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa; /* Light blue background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    input, textarea, button {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f9f9f9;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    li.done {
+      text-decoration: line-through;
+      background-color: #d3ffd3;
+    }
+
+    .remove-btn {
+      background-color: red;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover {
+      background-color: darkred;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>My To-Do List</h1>
+
+    <!-- Form to add a task -->
+    <input type="text" id="task-name" placeholder="Task Name" />
+    <textarea id="task-description" placeholder="Task Description"></textarea>
+    <input type="date" id="task-deadline" placeholder="Deadline" />
+
+    <button id="add-btn">Add Task</button>
+
+    <ul id="todo-list"></ul>
+  </div>
+
+  <script>
+    document.getElementById("add-btn").addEventListener("click", addItem);
+    document.getElementById("task-name").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        addItem();
+      }
+    });
+
+    function addItem() {
+      const taskName = document.getElementById("task-name").value.trim();
+      const taskDescription = document.getElementById("task-description").value.trim();
+      const taskDeadline = document.getElementById("task-deadline").value;
+
+      if (taskName !== "" && taskDescription !== "" && taskDeadline !== "") {
+        const todoList = document.getElementById("todo-list");
+
+        const li = document.createElement("li");
+
+        const taskDetails = document.createElement("div");
+        taskDetails.innerHTML = `<strong>${taskName}</strong><br> 
+          <small>${taskDescription}</small><br>
+          <em>Deadline: ${taskDeadline}</em>`;
+
+        li.appendChild(taskDetails);
+
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Remove";
+        removeBtn.classList.add("remove-btn");
+        removeBtn.addEventListener("click", function () {
+          removeItem(li);
+        });
+
+        li.appendChild(removeBtn);
+        li.addEventListener("click", function () {
+          toggleDone(li);
+        });
+
+        todoList.appendChild(li);
+
+        // Clear input fields after adding task
+        document.getElementById("task-name").value = "";
+        document.getElementById("task-description").value = "";
+        document.getElementById("task-deadline").value = "";
+      } else {
+        alert("Please fill in all fields.");
+      }
+    }
+
+    function removeItem(item) {
+      item.remove();
+    }
+
+    function toggleDone(item) {
+      item.classList.toggle("done");
+    }
+  </script>
+</body>
+</html>
