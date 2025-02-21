@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-3 Frontend Task</title>
+    <style>
+        body {
+            background-color: #478bca;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 360px;
+            height: 360px;
+            background-color: #5656dd;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .row {
+            display: flex;
+            flex: 1;
+        }
+        .cell {
+            flex: 1;
+            border: 3px solid black;
+        }
+        .red { background-color: rgb(52, 231, 36); }
+        .gray { background-color: #0c0ce2; }
+        .purple { background-color: #9333ea; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .button {
+            background-color: white;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 50%;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+        .counter {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #f87171;
+            border-radius: 5px;
+            text-align: center;
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Day-3 Frontend Task</h1>
+    <body style="background-image: url(bg12.jpg);"></body>
+    <div class="container">
+        <div class="row">
+            <div class="cell red"></div>
+            <div class="cell gray"></div>
+            <div class="cell red"></div>
+        </div>
+        <div class="row">
+            <div class="cell gray" style="display: flex; align-items: center; justify-content: center;">
+                <button class="button" onclick="decreaseCount()">Decrease</button>
+            </div>
+            <div class="cell purple">
+                <p id="datetime"></p>
+                <p class="counter">Counter: <span id="count">0</span></p>
+            </div>
+            <div class="cell gray" style="display: flex; align-items: center; justify-content: center;">
+                <button class="button" onclick="increaseCount()">Increase</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell red"></div>
+            <div class="cell gray"></div>
+            <div class="cell red"></div>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        function updateTime() {
+            const now = new Date();
+            document.getElementById("datetime").innerText = now.toLocaleDateString() + " - " + now.toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        function increaseCount() {
+            count++;
+            document.getElementById("count").innerText = count;
+        }
+
+        function decreaseCount() {
+            count--;
+            document.getElementById("count").innerText = count;
+        }
+    </script>
+   
+</body>
+</html> 
