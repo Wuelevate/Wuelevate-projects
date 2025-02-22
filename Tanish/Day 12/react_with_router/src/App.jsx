@@ -1,7 +1,8 @@
 import {useState} from 'react';
 import { Route , Routes } from "react-router-dom";
 
-import Home from "./pages/CounterApp";
+import Home from './pages/Home';
+import CounterApp from "./pages/CounterApp";
 import Dashboard from "./pages/Dashboard";
 import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainHeader/>}>
             <Route index element={<Home/>}/>
+            <Route path="/CounterApp" element={<CounterApp/>}/>
             <Route path="/Form" element={<Contact/>}/>
             <Route path="/LogIn" element={<LogIn setIsLoggedIn={setIsLoggedIn}/>}/>
             <Route path="/SignUp" element={<SignUp setIsLoggedIn={setIsLoggedIn}/>}/>
