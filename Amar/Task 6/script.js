@@ -22,7 +22,7 @@ const cityName = document.getElementById("city");
 const cityTemp = document.querySelector(".temperature");
 const windSpeed = document.querySelector(".wind-speed");
 const humidity = document.querySelector(".humidity");
-const visibility = document.querySelector(".visivility-distance");
+const visibility = document.querySelector(".visibility-distance");
 const weatherDesc = document.querySelector(".weather-desc");
 const date = document.querySelector(".date");
 const descriptionIcon = document.querySelector(".sunny")
@@ -50,12 +50,12 @@ function updateWeatherApp(data) {
     const currentDate = new Date()
     date.textContent = currentDate.toDateString();
 
-    const weatherIocnName = getweatherIocnName(data.weather[0].main);
-    descriptionIcon.textContent = weatherIocnName;
+    const weatherIconName = getWeatherIconName(data.weather[0].main);
+    descriptionIcon.textContent = weatherIconName;
 
 }
 
-function getweatherIocnName(weatherCondition) {
+function getWeatherIconName(weatherCondition) {
     switch (weatherCondition) {
         case "Clear":
             return "sunny";
