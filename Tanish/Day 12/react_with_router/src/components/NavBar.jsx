@@ -16,9 +16,13 @@ const NavBar = (props) => {
       </Link>
       <div className="flex gap-x-6 text-[#AFB2BF] ">
         <NavLink to="/">
-          <span>CounterApp</span>
-          {/* Home */}
+          <span>Home</span>
         </NavLink>
+
+        <NavLink to="/CounterApp">
+          <span>CounterApp</span>
+        </NavLink>
+        
         <NavLink to="/Form"> 
           <span>Form</span>
           {/* Contact */}

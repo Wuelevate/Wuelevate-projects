@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Home = () => {
+const CounterApp = () => {
 
   const [value , setValue] = useState(0);
 
@@ -38,5 +38,5 @@ const Home = () => {
   )
 }
 
-export default Home
+export default CounterApp
 
