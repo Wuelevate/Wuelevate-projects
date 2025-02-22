@@ -39,7 +39,7 @@ const Foreground = () => {
         
     ]
     return (
-        <div ref={ref} className="fixed top-0 left-0 z-[3] w-full h-full flex gap-10 flex-wrap p-5">
+        <div ref={ref} className="bg-gradient-to-r bg-gray-900 bg-opacity-50 fixed top-0 left-0 z-[3] w-full h-full flex gap-10 flex-wrap p-5">
             {data.map((item, index) => (
                 <Card key={index} data={item} reference={ref} />
             ))}
