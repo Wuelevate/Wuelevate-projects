@@ -7,6 +7,7 @@ Each task covers different aspects of **frontend, backend, databases, and full-s
 
 ## 📂 Repository Structure
 
+- **Day 0**:   Basic webpage using html and css
 - **Day 1**:   Basic webpage using html and css
 - **Day 2**:   Portfolio using html , css and Java script ,Live link is: < https://amardeep-singh27017.github.io/portfolio_website/ >
 - **Day 3**:   Counter app with flex box using html , css and Java script
@@ -19,6 +20,7 @@ Each task covers different aspects of **frontend, backend, databases, and full-s
 - **Day 10**:  React app using webpack
 - **Day 11**:  Form app using react and tailwind with Regular expression for form validation. 
 - **Day 12**:  A react app using tailwind and react Router and Link to navigate multiple pages in the application.
+- **Day 13**:  It is a Chatting app using React, mainly useContext, useReducer, useState, and also used Tailwind CSS for UI design.
 
 ---
 
