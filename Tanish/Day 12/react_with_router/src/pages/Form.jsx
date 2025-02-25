@@ -1,5 +1,6 @@
 import { useState } from 'react'
 const Contact = () => {
+  
 
     const initialFormState ={
       firstName:"" ,
@@ -18,13 +19,14 @@ const Contact = () => {
   
     const [formData , setFormData] = useState(initialFormState)
   
-  // Check if required fields are filled
-  
     const isFormValid = () => {
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
       return (
         formData.firstName.trim() &&
         formData.lastName.trim() &&
-        formData.email.trim() &&
+        emailRegex.test(formData.email) &&
         formData.streetAddress.trim() &&
         formData.city.trim() &&
         formData.state.trim() &&
@@ -55,7 +57,7 @@ const Contact = () => {
 
         <label htmlFor='firstName'>First name</label>
         <input
-        className='w-full px-2 py-2 border-black border rounded-md mt-4 '
+        className='w-full px-2 py-2 border-black border rounded-md mb-4 '
         type="text"
         placeholder="type here"
         onChange={changeHandler}
@@ -65,7 +67,7 @@ const Contact = () => {
 
         <label htmlFor="lastName" >Last name</label>
         <input
-        className='w-full px-2 py-2 border-black border rounded-md mt-4 '
+        className='w-full px-2 py-2 border-black border rounded-md mb-4 '
         type="text"
         placeholder="type here"
         onChange={changeHandler}
@@ -75,7 +77,7 @@ const Contact = () => {
 
         <label htmlFor='email' >Email</label>
         <input
-        className='w-full px-2 py-2 border-black border rounded-md mt-4 '
+        className='w-full px-2 py-2 border-black border rounded-md mb-4 '
         type="email"
         placeholder="type here"
         onChange={changeHandler}
@@ -88,7 +90,7 @@ const Contact = () => {
         name='country'
         onChange={changeHandler}
         id='country'
-        className='w-full px-2 py-2 border-black border rounded-md mt-4 '>
+        className='w-full px-2 py-2 border-black border rounded-md mb-4 '>
           <option value="India">India</option>
           <option value="USA">USA</option>
           <option value="Dubai">Dubai</option>
@@ -98,7 +100,7 @@ const Contact = () => {
 
         <label htmlFor='streetAddress' >Street Address</label>
         <input
-        className='w-full px-2 py-2 border-black border rounded-md mt-4 '
+        className='w-full px-2 py-2 border-black border rounded-md mb-4 '
         type="text"
         placeholder="type here"
         onChange={changeHandler}
@@ -108,7 +110,7 @@ const Contact = () => {
 
         <label htmlFor='city' >City</label>
         <input
-        className='w-full px-2 py-2 border-black border rounded-md mt-4 '
+        className='w-full px-2 py-2 border-black border rounded-md mb-4 '
         type="text"
         placeholder="type here"
         onChange={changeHandler}
@@ -118,7 +120,7 @@ const Contact = () => {
 
         <label htmlFor='state' >State/Province</label>
         <input
-        className='w-full px-2 py-2 border-black border rounded-md mt-4 '
+        className='w-full px-2 py-2 border-black border rounded-md mb-4 '
         type="text"
         placeholder="type here"
         onChange={changeHandler}
@@ -128,7 +130,7 @@ const Contact = () => {
 
         <label htmlFor='zipCode' >Zip/Postal code</label>
         <input
-        className='w-full px-2 py-2 border-black border rounded-md mt-4 '
+        className='w-full px-2 py-2 border-black border rounded-md mb-8 '
         type="text"
         placeholder="type here"
         onChange={changeHandler}
@@ -138,7 +140,7 @@ const Contact = () => {
 
         <fieldset>
 
-          <legend className='mt-2 mb-4 font-semibold'>By Email</legend>
+          <legend className='mb-4 font-semibold'>By Email</legend>
 
           <input
             name='comments'
@@ -172,7 +174,7 @@ const Contact = () => {
 
         </fieldset>
 
-        <fieldset className='mt-3 font-medium '>
+        <fieldset className='mt-8 font-medium '>
 
           <legend>Push Notifications</legend>
 
@@ -185,7 +187,7 @@ const Contact = () => {
             onChange={changeHandler}
             name="notificationType"
             value='Everything'
-            className='mt-4 cursor-pointer'/>
+            className='mt-7 cursor-pointer'/>
           <label className='font-medium ml-3 cursor-pointer' htmlFor='everything'>Everything</label>
           <br/>
 
@@ -213,7 +215,7 @@ const Contact = () => {
 
         <button
               disabled={!isFormValid()}
-              className={`font-bold px-4 py-2 rounded mt-3 text-white ${isFormValid() ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-300 cursor-not-allowed'}`}
+              className={`font-bold px-4 py-2 mt-8 rounded  text-white ${isFormValid() ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-300 cursor-not-allowed'}`}
         >Save</button>
 
       </form>
