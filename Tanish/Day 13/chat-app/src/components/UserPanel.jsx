@@ -18,6 +18,7 @@ const UserPanel = ({ name , image }) => {
           text: message,
           sender: name,
           time: formatTime(),
+          profileImage : image ,
         },
       });
       setMessage("");
