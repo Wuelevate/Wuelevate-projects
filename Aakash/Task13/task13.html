@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatting App</title>
+    <link rel="stylesheet" href="task13.css">
+</head>
+<body>
+    <main>
+        <header>
+            <div class="title">
+                <img src="https://cdn.dribbble.com/users/17323/screenshots/822440/chatapp-ios-icon.png" alt="">
+                <h1>Chat App</h1>
+            </div>
+        </header>
+
+        <div class="container">
+
+            <div class="user-window">
+                <div class="user-head">
+                    <h3>Users</h3>
+                    <h4>2</h4>
+                </div>
+                <div class="user-list">
+                    <p id="user1" class="user" onclick="switchUser('Jarvis')">Jarvis</p>
+                    <p id="user2" class="user" onclick="switchUser('Veronica')">Veronica</p>
+                </div>
+            </div>
+
+            <div class="chat-window">
+                <div class="chats">
+                    <div id="userJoinMessage" class="user-join">
+                        <p><b>Jarvis</b> joined the chat</p>
+                    </div>
+
+                    <div id="chatContainer">
+                        <!-- Messages will be dynamically added here -->
+                    </div>
+
+                </div>
+
+                <div class="user-input">
+                    <input type="text" id="userInput" class="input-field" placeholder="Type a message..." />
+                    <button id="sendBtn" class="send-button">Send</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        let currentUser = 'Jarvis';  
+
+        function getCurrentTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const date = now.toLocaleDateString(); 
+            return `${date} ${hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        }
+
+        function addMessage(message) {
+            const chatContainer = document.getElementById('chatContainer');
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add(currentUser === 'Jarvis' ? 'incoming-messages' : 'outgoing-messages');
+            
+            const userName = document.createElement('h5');
+            userName.textContent = currentUser;
+            
+            const messageText = document.createElement('p');
+            messageText.textContent = message;
+
+            const timeDate = document.createElement('p');
+            timeDate.textContent = getCurrentTime(); // Add current time and date
+
+            // Append the user name, message, and time/date to the message div
+            messageDiv.appendChild(userName);
+            messageDiv.appendChild(messageText);
+            messageDiv.appendChild(timeDate);
+
+            chatContainer.appendChild(messageDiv);
+
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        document.getElementById('sendBtn').addEventListener('click', function() {
+            const userInput = document.getElementById('userInput').value;
+
+            if (userInput.trim() === '') {
+                return; // Prevent sending empty messages
+            }
+
+            // Add the message to the chat window
+            addMessage(userInput);
+
+            // Clear the input field after sending the message
+            document.getElementById('userInput').value = '';
+        });
+
+        document.getElementById('userInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') { // Check if the pressed key is Enter
+                const userInput = this.value; // Get the value of the input field
+
+                if (userInput.trim() === '') {
+                    return; 
+                }
+
+                addMessage(userInput);
+
+                // Clear the input field after sending the message
+                this.value = '';
+            }
+        });
+
+        function switchUser(user) {
+            currentUser = user;
+
+            // Update the active user style in the user list
+            const user1 = document.getElementById('user1');
+            const user2 = document.getElementById('user2');
+
+            if (currentUser === 'Jarvis') {
+                user1.style.fontWeight = 'bold';  
+                user2.style.fontWeight = 'normal';  
+            } else {
+                user1.style.fontWeight = 'normal';  
+                user2.style.fontWeight = 'bold';  
+            }
+
+            // Update the "joined the chat" message
+            const userJoinMessage = document.getElementById('userJoinMessage');
+            userJoinMessage.innerHTML = `<p><b>${currentUser}</b> joined the chat</p>`;
+        }
+    </script>
+</body>
+</html>
