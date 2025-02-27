@@ -38,3 +38,4 @@ Each task covers different aspects of **frontend, backend, databases, and full-s
     git clone <repository-url>
 
 2. **Navigate to a specific task folder to check the implementation.**
+ This is a simple text
