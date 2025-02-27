@@ -17,7 +17,7 @@ const CounterApp = () => {
 }
 
   return (
-    <div className="h-[100vh] w-[100vw] flex items-center justify-center flex-col bg-[#000814] gap-10 ">
+    <div className="flex-1 flex mt-[20vh] items-center  flex-col bg-[#000814] gap-10 ">
 
         <p className='font-medium text-2xl text-[#0398d4]'>Increment & Decrement</p>
     
