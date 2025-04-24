@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gilroy', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(139, 139, 139);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.msg {
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(139, 139, 139);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.msg h1 {
+    font-size: 5vw;
+    color: white;
+}
+
+.msg h3 {
+    margin-top: 1rem;
+    font-size: 3vw;
+    color: white;
+}
+
+.msg button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.5vw;
+    border-radius: 1rem;
+    border: none;
+    background-color: bisque;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container {
+    margin-top: 2rem;
+    height: 60vh;
+    width: 60vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(139, 139, 139);
+    flex-wrap: wrap;
+    max-width: 100vw;
+    max-height: 100vw;
+}
+
+h1 {
+    font-size: 5vw;
+    color: white;
+}
+
+.box {
+    width: 18vmin;
+    height: 18vmin;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 0.5rem black;
+    color: black;
+    font-size: 8vmin;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#reset-btn {
+    padding: 1rem 2rem;
+    font-size: 1.5vw;
+    color: white;
+    border-radius: 1rem;
+    border: none;
+    background-color: bisque;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+
+/* Media Queries for Smaller Devices */
+
+@media (max-width: 768px) {
+    .msg h1 {
+        font-size: 8vw;
+    }
+    .msg h3 {
+        font-size: 5vw;
+    }
+    .msg button {
+        font-size: 3.5vw;
+    }
+    h1 {
+        font-size: 8vw;
+    }
+    #container {
+        height: auto;
+        width: 80vw;
+        margin-top: 1rem;
+    }
+    .box {
+        width: 25vmin;
+        height: 25vmin;
+        font-size: 10vmin;
+    }
+    #reset-btn {
+        font-size: 3.5vw;
+    }
+}
+
+
+/* Media Queries for Very Small Devices */
+
+@media (max-width: 480px) {
+    .msg h1 {
+        font-size: 10vw;
+    }
+    .msg h3 {
+        font-size: 6vw;
+    }
+    .msg button {
+        font-size: 4.5vw;
+    }
+    h1 {
+        font-size: 10vw;
+    }
+    #container {
+        height: auto;
+        width: 90vw;
+        margin-top: 0.5rem;
+    }
+    .box {
+        width: 30vmin;
+        height: 30vmin;
+        font-size: 12vmin;
+    }
+    #reset-btn {
+        font-size: 4.5vw;
+    }
+}
